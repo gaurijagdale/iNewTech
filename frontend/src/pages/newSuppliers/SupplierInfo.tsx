@@ -50,9 +50,11 @@ const SupplierInfo = () => {
 
   const handleDeleteSupplier = async () => {
     try {
-        const isConfirmed = confirm("Are you sure you want to delete this supplier?");
-        if (!isConfirmed) return; // Stop execution if user cancels
-    
+      const isConfirmed = confirm(
+        "Are you sure you want to delete this supplier?"
+      );
+      if (!isConfirmed) return; // Stop execution if user cancels
+
       await axios.delete(`http://localhost:3000/suppliers/${id}`);
       navigate("/");
       console.log("Supplier deleted successfully.");
@@ -84,9 +86,11 @@ const SupplierInfo = () => {
             <button className="bg-blue-600 text-white py-2 px-4 text-sm">
               Quotations
             </button>
-            <button className="bg-blue-600 text-white py-2 px-4 text-sm">
-              Edit
-            </button>
+            <Link to={`/edit-supplier/${id}`}>
+              <button className="bg-blue-600 text-white py-2 px-4 text-sm">
+                Edit
+              </button>
+            </Link>
             <button
               className="bg-blue-600 text-white py-2 px-4 text-sm"
               onClick={handleDeleteSupplier}

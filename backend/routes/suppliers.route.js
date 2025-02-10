@@ -62,16 +62,12 @@ router.post('/item', async(req, res) => {
 });
 
 // Update a supplier by ID
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
     const { id } = req.params;
-    const { name, contact } = req.body;
-    db.query(UPDATE_SUPPLIER, [name, contact, id], (err, results) => {
-        if (err) {
-            console.error("Database Query Failed:", err);
-            return res.status(500).json({ error: "Database query failed" });
-        }
-        res.json({ id, name, contact });
-    });
+    const { name, contact, email, contact_person, whatsapp, address, city, state, gst_no, supplier_type, payment_type, delivery, quality } = req.body;
+    const results = await db.promise().query(UPDATE_SUPPLIER, [name, contact, email, contact_person, whatsapp, address, city, state, gst_no, supplier_type, payment_type, delivery, quality]);
+
+    res.json({ message: 'Supplier updated' });
 });
 
 // Delete a supplier by ID

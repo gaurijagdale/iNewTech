@@ -5,6 +5,7 @@ const GET_SUPPLIER_BY_ID = "SELECT * FROM suppliers where id = ?"
 const GET_SUPPLIER_ITEMS_BY_ID = "SELECT item.id, item.name, item.rate FROM items_supplied item WHERE item.supplier_id = ?";
 
 const CREATE_SUPPLIER = "INSERT INTO suppliers (name, contact, email, contact_person, whatsapp, address, city, state, gst_no, supplier_type, payment_type, delivery, quality) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+const UPDATE_SUPPLIER = "UPDATE suppliers SET name = ?, contact = ?, email = ?, contact_person = ?, whatsapp = ?, address = ?, city = ?, state = ?, gst_no = ?, supplier_type = ?, payment_type = ?, delivery = ?, quality = ? WHERE id = ?;";
 
 const CREATE_ITEMS = "INSERT INTO items_supplied (name, rate, supplier_id) VALUES (?, ?, ?);";
 
